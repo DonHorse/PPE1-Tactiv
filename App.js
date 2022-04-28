@@ -1,10 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import {useEffect, useState} from "react";
+
+
 
 export default function App() {
+
+  const [dailySteps, setdailySteps] = useState(0);
+
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Podometer</Text>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -17,4 +25,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
 });
