@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, TextInput, Text, TouchableOpacity, KeyboardAvoidingView, Platform} from 'react-native';
+import {View, Image, TextInput, Text, TouchableOpacity, KeyboardAvoidingView, Platform,} from 'react-native';
 import {styles} from "../styles/style";
 
 
@@ -11,6 +11,10 @@ export default function Register () {
             style={styles.container}
         >
             <View>
+                <Image
+                    style={styles.box}
+                    source={require('../assets/logo.png')}
+                />
                 <TextInput type="text" placeholder="Email" style={styles.input}/>
                 <TextInput secureTextEntry={true} placeholder="Mot de passe" style={styles.input}/>
                 <Text></Text>

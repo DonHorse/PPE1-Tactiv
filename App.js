@@ -36,16 +36,76 @@ export default function App() {
                                     },
                                 }}
                             />
-                            <SettingsStack.Screen name="Login" component={Login} />
-                            <SettingsStack.Screen name="Register" component={Register} />
+                            <SettingsStack.Screen
+                                name="Login"
+                                component={Login}
+                                options={{
+                                    title: 'Login',
+                                    headerStyle: {
+                                        backgroundColor: '#F2BD2C',
+                                    },
+                                    headerTintColor: '#242423',
+                                    headerTitleStyle: {
+                                        fontWeight: 'bold',
+
+                                    },
+                                }}
+                            />
+                            <SettingsStack.Screen
+                                name="Register"
+                                component={Register}
+                                options={{
+                                    title: 'Register',
+                                    headerStyle: {
+                                        backgroundColor: '#F2BD2C',
+                                    },
+                                    headerTintColor: '#242423',
+                                    headerTitleStyle: {
+                                        fontWeight: 'bold',
+
+                                    },
+                                }}
+                            />
                         </SettingsStack.Navigator>
                     )}
                 </Tab.Screen>
-                <Tab.Screen name="Second">
+                <Tab.Screen name="Historique"  >
                     {() => (
                         <HomeStack.Navigator>
-                            <HomeStack.Screen name="Activities" component={Activities} />
-                            <HomeStack.Screen name="Historic" component={Historic} />
+                            <HomeStack.Screen
+                                name="Historic"
+                                component={Historic}
+                                options={{
+                                    title: 'Historique',
+                                    headerStyle: {
+                                        backgroundColor: '#F2BD2C',
+                                    },
+                                    headerTintColor: '#242423',
+                                    headerTitleStyle: {
+                                        fontWeight: 'bold',
+                                    },
+                                }}
+                            />
+                        </HomeStack.Navigator>
+                    )}
+                </Tab.Screen>
+                <Tab.Screen name="Activités">
+                    {() => (
+                        <HomeStack.Navigator>
+                            <HomeStack.Screen
+                                name="Activities"
+                                component={Activities}
+                                options={{
+                                    title: 'Activités',
+                                    headerStyle: {
+                                        backgroundColor: '#F2BD2C',
+                                },
+                                    headerTintColor: '#242423',
+                                    headerTitleStyle: {
+                                        fontWeight: 'bold',
+                                            },
+                                }}
+                                />
                         </HomeStack.Navigator>
                     )}
                 </Tab.Screen>
