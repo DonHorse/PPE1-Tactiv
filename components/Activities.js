@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, TextInput,Text } from 'react-native';
+import { Button, View, Text } from 'react-native';
 import {Alert} from "react-native";
 
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, View, TextInput, Text, Alert} from 'react-native';
+import {Button, View,  Text, Alert} from 'react-native';
 
 
 export default function Historic () {
