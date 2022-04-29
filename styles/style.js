@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
             borderRadius:5,
         },
 
+
         top: {
             flex: 0.3,
             justifyContent:"space-evenly",
@@ -21,9 +22,18 @@ const styles = StyleSheet.create({
         middle: {
             flex: 0.7,
             backgroundColor: "#CFDBD5",
-            borderRadius : 15
+            borderRadius : 15,
+
 
         },
+    middle2: {
+        flex: 0.7,
+        backgroundColor: "#CFDBD5",
+        borderRadius : 15,
+        justifyContent: "space-between",
+
+
+    },
         bottom: {
             flex: 0.3,
             backgroundColor: "pink",
@@ -82,6 +92,12 @@ const styles = StyleSheet.create({
     textDark:{
         color:'#242423',
         alignSelf:"center",
+    },
+
+    textDarkBold:{
+        color:'#242423',
+        alignSelf:"center",
+        fontSize : 20,
     },
 
     textLight:{

@@ -26,6 +26,8 @@ export default function Main_Pedometer ({navigation}) {
     const [stepCount, setStepCount] = useState(0);
     const [addSteps, setAddSteps] = useState(0);
     const [addGoal, setAddGoal] = useState(0);
+    const [validationGoal, setValidationGoal] = useState(0);
+    const [maj, setMaj] = useState(0);
 
     // requête à l'API GET (Gestion du statut Login ou logout)
     Axios.defaults.withCredentials = true;
@@ -37,8 +39,7 @@ export default function Main_Pedometer ({navigation}) {
                 setLoginStat(false);
                 setUser("")
                 console.log("logout");
-                window.location = "/login";
-
+                navigation.navigate("Login");
             }
         });
     };
@@ -49,6 +50,7 @@ export default function Main_Pedometer ({navigation}) {
         }).then((response) => {
             Alert.alert(response.data.message);
         }).catch(error => console.log(error));
+        setMaj(maj + 1);
     };
 
     const CreateGoal = () => {
@@ -57,30 +59,38 @@ export default function Main_Pedometer ({navigation}) {
     }).then((response) => {
             Alert.alert(response.data.message);
         }).catch(error => console.log(error));
+        setMaj(maj + 1);
     };
 
 
 
     useEffect( () => {
-        Axios.get("http://192.168.1.85:3001/TACTIV/goal-user").then((response) => {
-            if (response) {
-                setGoal(response.data[0].count);
-            }
-        }).catch(error => console.log(error));
+        if(loginStat === true){
+            Axios.get("http://192.168.1.85:3001/TACTIV/goal-user").then((response) => {
+                if (response) {
+                    setGoal(response.data[0].count);
+                }
+            }).catch(error => console.log(error));
+        }
+
     });
 
     useEffect( () => {
-        Axios.get("http://192.168.1.85:3001/TACTIV/stepcount-user").then((response) => {
-            if (response) {
-                setStepCount(response.data[0].count);
-                if(stepCount >= goal){
-                    Axios.put("http://192.168.1.85:3001/TACTIV/goal-validation",{
-                    }).then((response) => {
-                        Alert.alert(response.data.message);
-                    }).catch(error => console.log(error));
-                };
-            }
-        }).catch(error => console.log(error));;
+        if(loginStat === true){
+            Axios.get("http://192.168.1.85:3001/TACTIV/stepcount-user").then((response) => {
+                if (response) {
+                    setStepCount(response.data[0].count);
+                    if(stepCount >= goal && goal > 0 ){
+                        setValidationGoal(1);
+                        Axios.put("http://192.168.1.85:3001/TACTIV/goal-validation",{
+                        }).then((response) => {
+                            console.log(response.data.message);
+                        }).catch(error => console.log(error));
+                    };
+                }
+            }).catch(error => console.log(error));
+        }
+
     });
 
 
@@ -92,7 +102,7 @@ export default function Main_Pedometer ({navigation}) {
             } else{
                 setLoginStat(false);
             }
-        });
+        }).catch(error => console.log(error));
     });
 
     return(
@@ -140,6 +150,18 @@ export default function Main_Pedometer ({navigation}) {
                 <Text></Text>
                 {loginStat === true && (
                     <View>
+
+                        <View style={styles.container}>
+                            <Text style={styles.textDark}>Objectif</Text>
+                            <Text style={styles.textDarkBold}>{stepCount} / {goal}</Text>
+                            {validationGoal === 0 && (
+                                <Text style={styles.textDark}>En cours</Text>
+                            )}
+                            {validationGoal === 1 && (
+                                <Text style={styles.textDark}>Validé !</Text>
+                            )}
+                        </View>
+                        <Text></Text>
                         <Text style={styles.textDark}>Podomètre</Text>
                         <TextInput
                             style={styles.input}
@@ -154,11 +176,6 @@ export default function Main_Pedometer ({navigation}) {
                         >
                             <Text style={styles.textLight2}>Enregistrer</Text>
                         </TouchableOpacity>
-                        <Text></Text>
-                        <View style={styles.container}>
-                            <Text style={styles.textDark}>Objectif</Text>
-                            <Text style={styles.textDark}>{stepCount} / {goal}</Text>
-                        </View>
                             <Text></Text>
                             <Text style={styles.textDark}>Ajouter un objectif</Text>
                             <TextInput
