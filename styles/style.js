@@ -45,6 +45,17 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         color:'#242423',
     },
+
+    buttonLight2: {
+        backgroundColor: '#F2BD2C',
+        paddingHorizontal:25,
+        paddingVertical:12,
+        borderRadius: 25,
+        color:'#242423',
+        width: '50%',
+        alignSelf:'center',
+    },
+
     buttonDark: {
         backgroundColor: '#333533',
         paddingHorizontal:25,

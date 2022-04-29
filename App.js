@@ -25,7 +25,7 @@ export default function App() {
                                 name="Pedometer"
                                 component={Main_Pedometer}
                                 options={{
-                                    title: 'My home',
+                                    title: 'Home',
                                     headerStyle: {
                                         backgroundColor: '#F2BD2C',
                                     },
