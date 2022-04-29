@@ -14,7 +14,7 @@ export default function Register ({navigation}) {
     Axios.defaults.withCredentials = true;
 
     const register = () => {
-        Axios.post("http://127.0.0.1:3001/TACTIV/register", {
+        Axios.post("http://192.168.1.85:3001/TACTIV/register", {
             name: name,
             email: email,
             password: password,

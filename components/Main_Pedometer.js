@@ -44,7 +44,7 @@ export default function Main_Pedometer ({navigation}) {
     };
 
     const AddMeasure = () => {
-        Axios.post("http://127.0.0.1:3001/TACTIV/measure-add", {
+        Axios.post("http://192.168.1.85:3001/TACTIV/measure-add", {
             addSteps : addSteps,
         }).then((response) => {
             Alert.alert(response.data.message);
@@ -52,12 +52,14 @@ export default function Main_Pedometer ({navigation}) {
     };
 
     const CreateGoal = () => {
-        Axios.post("http://127.0.0.1:3001/TACTIV/goal-add", {
+        Axios.post("http://192.168.1.85:3001/TACTIV/goal-add", {
             addGoal : addGoal,
     }).then((response) => {
             Alert.alert(response.data.message);
         }).catch(error => console.log(error));
     };
+
+
 
     useEffect( () => {
         Axios.get("http://192.168.1.85:3001/TACTIV/goal-user").then((response) => {
@@ -71,6 +73,12 @@ export default function Main_Pedometer ({navigation}) {
         Axios.get("http://192.168.1.85:3001/TACTIV/stepcount-user").then((response) => {
             if (response) {
                 setStepCount(response.data[0].count);
+                if(stepCount >= goal){
+                    Axios.put("http://192.168.1.85:3001/TACTIV/goal-validation",{
+                    }).then((response) => {
+                        Alert.alert(response.data.message);
+                    }).catch(error => console.log(error));
+                };
             }
         }).catch(error => console.log(error));;
     });
