@@ -9,12 +9,17 @@ import Main_Pedometer from "./components/Main_Pedometer";
 import Login from "./components/Login";
 import Historic from "./components/Historic";
 import Activities from "./components/Activities";
+import Admin from "./components/Admin";
+import ActivityCreate from "./components/ActivityCreate";
+import GlobalHistoric from "./components/GlobalHistoric";
 
 const Tab = createBottomTabNavigator();
 const SettingsStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
+const AdminStack = createNativeStackNavigator();
 
 export default function App() {
+
     return (
         <NavigationContainer>
             <Tab.Navigator screenOptions={{ headerShown: false, tabBarBadgeStyle:'#F2BD2C'}}  >
@@ -107,6 +112,54 @@ export default function App() {
                                 }}
                                 />
                         </HomeStack.Navigator>
+                    )}
+                </Tab.Screen>
+                <Tab.Screen name="Admin">
+                    {() => (
+                        <AdminStack.Navigator>
+                            <AdminStack.Screen
+                                name="Admin1"
+                                component={Admin}
+                                options={{
+                                    title: 'Admin1',
+                                    headerStyle: {
+                                        backgroundColor: '#F2BD2C',
+                                    },
+                                    headerTintColor: '#242423',
+                                    headerTitleStyle: {
+                                        fontWeight: 'bold',
+                                    },
+                                }}
+                            />
+                            <AdminStack.Screen
+                                name="ActivityAdd"
+                                component={ActivityCreate}
+                                options={{
+                                    title: 'Ajouter une Activité',
+                                    headerStyle: {
+                                        backgroundColor: '#F2BD2C',
+                                    },
+                                    headerTintColor: '#242423',
+                                    headerTitleStyle: {
+                                        fontWeight: 'bold',
+                                    },
+                                }}
+                            />
+                            <AdminStack.Screen
+                                name="GlobalHistorique"
+                                component={GlobalHistoric}
+                                options={{
+                                    title: 'Global Historique',
+                                    headerStyle: {
+                                        backgroundColor: '#F2BD2C',
+                                    },
+                                    headerTintColor: '#242423',
+                                    headerTitleStyle: {
+                                        fontWeight: 'bold',
+                                    },
+                                }}
+                            />
+                        </AdminStack.Navigator>
                     )}
                 </Tab.Screen>
             </Tab.Navigator>

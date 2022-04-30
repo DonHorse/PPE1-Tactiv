@@ -114,6 +114,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
     },
+    input2: {
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+    },
 
 
 });
