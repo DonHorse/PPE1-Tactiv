@@ -19,7 +19,6 @@ export default function Activities ({navigation}) {
         }).then((response) => {
             Alert.alert(response.data.message);
         }).catch(error => console.log(error));
-
     };
 
     useEffect(() => {
