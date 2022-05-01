@@ -15,11 +15,11 @@ export default function Activities ({navigation}) {
 
     const SubscribeActivity = (id_activity) => {
         Axios.post("http://192.168.1.85:3001/TACTIV/activity-sub-user", {
-            id_activity : selectId,
+            id_activity : id_activity,
         }).then((response) => {
             Alert.alert(response.data.message);
         }).catch(error => console.log(error));
-        setMaj(maj + 1);
+
     };
 
     useEffect(() => {
@@ -32,13 +32,13 @@ export default function Activities ({navigation}) {
                 navigation.navigate("Login");
             }
         }).catch(error => console.log(error));
-    });
+    },[]);
 
     useEffect(() => {
         Axios.get("http://192.168.1.85:3001/TACTIV/activity-list").then((response) => {
             setActivityList(response.data);
         }).catch(error => console.log(error));
-    },[]);
+    },);
 
     return(
         <ScrollView >
@@ -52,6 +52,7 @@ export default function Activities ({navigation}) {
                         {activityList.map((val) => {
                             return(
                                 <View>
+                                    <Text>{val.id}</Text>
                                     <Text>{val.name}</Text>
                                     <Text>{val.start_date}</Text>
                                     <Text>{val.end_date}</Text>
@@ -59,7 +60,7 @@ export default function Activities ({navigation}) {
                                     <Text>{val.description}</Text>
                                     <TouchableOpacity
                                     title="subscribe"
-                                    onPress={SubscribeActivity(val.id)}
+                                    onPress={() => {SubscribeActivity(val.id)}}
                                     style={styles.buttonDark2}
                                     >
                                     <Text style={styles.textLight}>Participer !</Text>
