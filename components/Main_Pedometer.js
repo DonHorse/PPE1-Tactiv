@@ -34,7 +34,7 @@ export default function Main_Pedometer ({navigation}) {
 
     const Logout = () => {
 
-        Axios.get("http://192.168.1.85:3001/TACTIV/logout").then((response) => {
+        Axios.get("http://192.168.210.135:3001/TACTIV/logout").then((response) => {
             if (response) {
                 setLoginStat(false);
                 setUser("")
@@ -45,7 +45,7 @@ export default function Main_Pedometer ({navigation}) {
     };
 
     const AddMeasure = () => {
-        Axios.post("http://192.168.1.85:3001/TACTIV/measure-add", {
+        Axios.post("http://192.168.210.135:3001/TACTIV/measure-add", {
             addSteps : addSteps,
         }).then((response) => {
             Alert.alert(response.data.message);
@@ -54,7 +54,7 @@ export default function Main_Pedometer ({navigation}) {
     };
 
     const CreateGoal = () => {
-        Axios.post("http://192.168.1.85:3001/TACTIV/goal-add", {
+        Axios.post("http://192.168.210.135:3001/TACTIV/goal-add", {
             addGoal : addGoal,
     }).then((response) => {
             Alert.alert(response.data.message);
@@ -66,7 +66,7 @@ export default function Main_Pedometer ({navigation}) {
 
     useEffect( () => {
         if(loginStat === true){
-            Axios.get("http://192.168.1.85:3001/TACTIV/goal-user").then((response) => {
+            Axios.get("http://192.168.210.135:3001/TACTIV/goal-user").then((response) => {
                 if (response) {
                     setGoal(response.data[0].count);
                 }
@@ -77,12 +77,12 @@ export default function Main_Pedometer ({navigation}) {
 
     useEffect( () => {
         if(loginStat === true){
-            Axios.get("http://192.168.1.85:3001/TACTIV/stepcount-user").then((response) => {
+            Axios.get("http://192.168.210.135:3001/TACTIV/stepcount-user").then((response) => {
                 if (response) {
                     setStepCount(response.data[0].count);
                     if(stepCount >= goal && goal > 0 ){
                         setValidationGoal(1);
-                        Axios.put("http://192.168.1.85:3001/TACTIV/goal-validation",{
+                        Axios.put("http://192.168.210.135:3001/TACTIV/goal-validation",{
                         }).then((response) => {
                             console.log(response.data.message);
                         }).catch(error => console.log(error));
@@ -95,7 +95,7 @@ export default function Main_Pedometer ({navigation}) {
 
 
     useEffect(() => {
-        Axios.get("http://192.168.1.85:3001/TACTIV/login").then((response) => {
+        Axios.get("http://192.168.210.135:3001/TACTIV/login").then((response) => {
             if (response.data.loggedIn === true) {
                 setLoginStat(true);
                 setUser(response.data.user[0].email);

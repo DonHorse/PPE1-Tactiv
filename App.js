@@ -12,6 +12,7 @@ import Activities from "./components/Activities";
 import Admin from "./components/Admin";
 import ActivityCreate from "./components/ActivityCreate";
 import GlobalHistoric from "./components/GlobalHistoric";
+import HistoricParam from "./components/Historic-param";
 
 const Tab = createBottomTabNavigator();
 const SettingsStack = createNativeStackNavigator();
@@ -82,6 +83,20 @@ export default function App() {
                                 component={Historic}
                                 options={{
                                     title: 'Historique',
+                                    headerStyle: {
+                                        backgroundColor: '#F2BD2C',
+                                    },
+                                    headerTintColor: '#242423',
+                                    headerTitleStyle: {
+                                        fontWeight: 'bold',
+                                    },
+                                }}
+                            />
+                            <HomeStack.Screen
+                                name="HistoricParam"
+                                component={HistoricParam}
+                                options={{
+                                    title: 'Historique par période',
                                     headerStyle: {
                                         backgroundColor: '#F2BD2C',
                                     },

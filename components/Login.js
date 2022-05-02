@@ -15,7 +15,7 @@ export default function Login ({navigation}) {
 
     // requête à l'API POST (renvoie un user si connexion réussi)
     const login = () => {
-        Axios.post("http://192.168.1.85:3001/TACTIV/login", {
+        Axios.post("http://192.168.210.135:3001/TACTIV/login", {
             email: email,
             password: password,
         }).then((response) => {
@@ -31,7 +31,7 @@ export default function Login ({navigation}) {
     }
     // requête à l'API GET (info si connexion)
     useEffect(() => {
-        Axios.get("http://192.168.1.85:3001/TACTIV/login").then((response) => {
+        Axios.get("http://192.168.210.135:3001/TACTIV/login").then((response) => {
             if (response.data.loggedIn === true) {
                 setLoginStatus("Connecté avec : "+ response.data.user[0].email);
             }

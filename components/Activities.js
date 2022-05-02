@@ -14,7 +14,7 @@ export default function Activities ({navigation}) {
     const [maj,setMaj] = useState(0);
 
     const SubscribeActivity = (id_activity) => {
-        Axios.post("http://192.168.1.85:3001/TACTIV/activity-sub-user", {
+        Axios.post("http://192.168.210.135:3001/TACTIV/activity-sub-user", {
             id_activity : id_activity,
         }).then((response) => {
             Alert.alert(response.data.message);
@@ -22,7 +22,7 @@ export default function Activities ({navigation}) {
     };
 
     useEffect(() => {
-        Axios.get("http://192.168.1.85:3001/TACTIV/login").then((response) => {
+        Axios.get("http://192.168.210.135:3001/TACTIV/login").then((response) => {
             if (response.data.loggedIn === true) {
                 setLoginStat(true);
                 setUser(response.data.user[0].email);
@@ -34,7 +34,7 @@ export default function Activities ({navigation}) {
     },[]);
 
     useEffect(() => {
-        Axios.get("http://192.168.1.85:3001/TACTIV/activity-list").then((response) => {
+        Axios.get("http://192.168.210.135:3001/TACTIV/activity-list").then((response) => {
             setActivityList(response.data);
         }).catch(error => console.log(error));
     },);

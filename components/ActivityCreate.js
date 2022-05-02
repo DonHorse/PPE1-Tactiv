@@ -40,7 +40,7 @@ export default function ActivityCreate () {
     //     console.log(endDate);
     // };
     const CreateActivity = () => {
-        Axios.post("http://192.168.1.85:3001/TACTIV/activity-add", {
+        Axios.post("http://192.168.210.135:3001/TACTIV/activity-add", {
             name : name,
             placeNumber : placeNumber,
             startDate : startDate,

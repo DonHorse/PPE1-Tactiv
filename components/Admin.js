@@ -13,7 +13,7 @@ export default function Admin({navigation}) {
 
     useEffect(() => {
 
-        Axios.get("http://192.168.1.85:3001/TACTIV/login").then((response) => {
+        Axios.get("http://192.168.210.135:3001/TACTIV/login").then((response) => {
             if (response.data.loggedIn === true) {
                 setUserRole(response.data.user[0].role);
                 setMaj(maj +1);

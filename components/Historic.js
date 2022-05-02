@@ -14,7 +14,7 @@ export default function Historic ({navigation}) {
 
 
     useEffect(() => {
-        Axios.get("http://192.168.1.85:3001/TACTIV/login").then((response) => {
+        Axios.get("http://192.168.210.135:3001/TACTIV/login").then((response) => {
             if (response.data.loggedIn === true) {
                 setLoginStat(true);
                 setUser(response.data.user[0].email);
@@ -26,21 +26,28 @@ export default function Historic ({navigation}) {
     });
 
     useEffect(() => {
-        Axios.get("http://192.168.1.85:3001/TACTIV/hostoric-goal-user").then((response) => {
+        Axios.get("http://192.168.210.135:3001/TACTIV/hostoric-goal-user").then((response) => {
             setGoalList(response.data);
         }).catch(error => console.log(error));
     },[]);
 
     useEffect(() => {
-        Axios.get("http://192.168.1.85:3001/TACTIV/hostoric-measure-user").then((response) => {
+        Axios.get("http://192.168.210.135:3001/TACTIV/hostoric-measure-user").then((response) => {
             setMeasureList(response.data);
         }).catch(error => console.log(error));
     },[]);
 
-    console.log(goalList);
-    console.log(measureList);
     return(
         <ScrollView >
+
+            <TouchableOpacity
+                title="Send"
+                style={styles.buttonDark2}
+                onPress={() => navigation.navigate("HistoricParam")}
+            >
+                <Text style={styles.textLight2}>Statistique</Text>
+            </TouchableOpacity>
+            <Text></Text>
             <Text style={styles.textDarkBold}>{user}</Text>
             <ScrollView >
                 <View style={styles.container}>

@@ -15,7 +15,7 @@ export default function GlobalHistoric ({navigation}) {
 
 
     useEffect(() => {
-        Axios.get("http://192.168.1.85:3001/TACTIV/login").then((response) => {
+        Axios.get("http://192.168.210.135:3001/TACTIV/login").then((response) => {
             if (response.data.loggedIn === true) {
                 setLoginStat(true);
                 setUser(response.data.user[0].email);
@@ -28,13 +28,13 @@ export default function GlobalHistoric ({navigation}) {
     });
 
     useEffect(() => {
-        Axios.get("http://192.168.1.85:3001/TACTIV/historic-goal-global").then((response) => {
+        Axios.get("http://192.168.210.135:3001/TACTIV/historic-goal-global").then((response) => {
             setGoalList(response.data);
         }).catch(error => console.log(error));
     },[]);
 
     useEffect(() => {
-        Axios.get("http://192.168.1.85:3001/TACTIV/historic-measure-global").then((response) => {
+        Axios.get("http://192.168.210.135:3001/TACTIV/historic-measure-global").then((response) => {
             setMeasureList(response.data);
 
         }).catch(error => console.log(error));
